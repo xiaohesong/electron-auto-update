@@ -1,0 +1,45 @@
+{
+  "name": "electron-auto-update",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "homepage": "./",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "preelectron-pack": "npm run clean-dist && npm run build",
+    "electron-pack": "build -c.extraMetadata.main=build/electron.js",
+    "clean-dist": "rm -rf ./dist"
+  },
+  "build": {
+    "appId": "com.example.electron-cra",
+    "productName": "自动更新",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://github.com/xiaohesong/electron-auto-update/tree/master/dist"
+      }
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "electron": "^2.0.4",
+    "electron-builder": "^20.19.2",
+    "wait-on": "^2.1.0"
+  }
+}
