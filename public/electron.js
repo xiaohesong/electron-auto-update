@@ -1,5 +1,11 @@
+const electron = require('electron')
 const updater = require("electron-updater");
 const autoUpdater = updater.autoUpdater;
+
+const ipc = electron.ipcMain
+const {app, dialog, Menu, BrowserWindow} = electron
+const path = require('path')
+const isDev = require('electron-is-dev')
 
 let mainWindow;
 
