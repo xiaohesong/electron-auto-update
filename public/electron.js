@@ -65,8 +65,8 @@ function createWindow() {
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
     // mainWindow.loadURL(isDev ? 'http://localhost:3000' : 'staging url');
 
-    const menu = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menu);
+    // const menu = Menu.buildFromTemplate(template);
+    // Menu.setApplicationMenu(menu);
 
 
     mainWindow.on('closed', () => mainWindow = null);
