@@ -10,8 +10,7 @@ const isDev = require('electron-is-dev')
 let mainWindow;
 
 function sendStatusToWindow(text) {
-    log.info(text);
-    win.webContents.send('message', text);
+    mainWindow.webContents.send('message', text);
 }
 
 autoUpdater.autoDownload = true;
@@ -37,7 +36,7 @@ autoUpdater.on('update-not-available', function (info) {
 });
 
 autoUpdater.on('error', function (err) {
-    sendStatusToWindow('Error in auto-updater.');
+    sendStatusToWindow(`Error in auto-updater is ${err}`);
 });
 
 autoUpdater.on('download-progress', (progressObj) => {
